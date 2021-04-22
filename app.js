@@ -12,6 +12,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var collegeRouter = require('./routes/college');
 var studentRouter = require('./routes/student');
+var chartDataRouter = require('./routes/chartData');
 
 
 const MONGOURL = config.MONGOURL;
@@ -29,7 +30,8 @@ connect.then((db) => {
 
 
 var app = express();
-app.disable('etag');
+app.use(cors()); // disable cors protection
+app.disable('etag'); // disable caching for HTTP 304 responses 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
@@ -44,6 +46,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/college', collegeRouter);
 app.use('/student', studentRouter);
+app.use('/chartData', chartDataRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -38,7 +38,7 @@ async function createStudent(college) {
         data.name = 'Student' + i + college.name;
         data.yearOfBatch = parseInt(college.yearFounded) + (Math.floor(i / 20));
         data.collegeref = college._id;
-        data.skills = getRandom(skillList, 5);
+        data.skills = getRandom(skillList, Math.floor(Math.random()*5 + 1));
 
         // console.log(data);
         sendData(data);
