@@ -33,14 +33,15 @@ function getRandom(arr, n) {
 skillList = ["c++", "c", "python", "react", "node", "mongo", "mongoose", "neural networks", "data warehousing", "cyber security", "amazon web services", "aws s3", "aws lambda", "serverless", "cloudfront CDN", "multi-threading", "multi-processing", "distributed systems", "cloud computing", "django", "sql", "postgresql"];
 
 async function createStudent(college) {
+    console.log(college)
     for (let i = 1; i <= 100; i++) {
         let data = {};
         data.name = 'Student' + i + college.name;
         data.yearOfBatch = parseInt(college.yearFounded) + (Math.floor(i / 20));
-        data.collegeref = college._id;
+        data.college = college._id;
         data.skills = getRandom(skillList, Math.floor(Math.random()*5 + 1));
 
-        // console.log(data);
+    //     // console.log(data);
         sendData(data);
     }
 
@@ -59,7 +60,7 @@ async function getCollege(collegeName) {
 
 mainish = async () => {
     try{
-        for(let i=1;i<=100;i++){
+        for(let i=1;i<=95;i++){
             let college = await getCollege(`College${i}`);
             createStudent(college);
         }
