@@ -13,6 +13,7 @@ var usersRouter = require('./routes/users');
 var collegeRouter = require('./routes/college');
 var studentRouter = require('./routes/student');
 var chartDataRouter = require('./routes/chartData');
+var crxRouter = require('./routes/crx');
 
 
 const MONGOURL = config.MONGOURL;
@@ -47,6 +48,7 @@ app.use('/users', usersRouter);
 app.use('/college', collegeRouter);
 app.use('/student', studentRouter);
 app.use('/chartData', chartDataRouter);
+app.use('/crx', crxRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
